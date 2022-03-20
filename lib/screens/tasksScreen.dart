@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/widgets/task_tile.dart';
+import 'package:todo_app/widgets/task_view.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({Key? key}) : super(key: key);
@@ -57,34 +59,7 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20.0),
                 ),
               ),
-              child: ListView(
-                children: [
-                  ListTile(
-                    leading: Text("1"),
-                    title: Text("dfh"),
-                    trailing: Checkbox(
-                      value: true,
-                      onChanged: (value) {},
-                    ),
-                  ),
-                  ListTile(
-                    leading: Text("2"),
-                    title: Text("dfhfdfd"),
-                    trailing: Checkbox(
-                      onChanged: (value) {},
-                      value: true,
-                    ),
-                  ),
-                  ListTile(
-                    leading: Text("3"),
-                    title: Text("dfhfsds"),
-                    trailing: Checkbox(
-                      onChanged: (value) {},
-                      value: false,
-                    ),
-                  )
-                ],
-              ),
+              child: TaskView(),
             ),
           )
         ],
@@ -92,3 +67,6 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
+
+
+
