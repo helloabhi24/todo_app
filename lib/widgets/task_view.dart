@@ -16,21 +16,14 @@ class _TaskViewState extends State<TaskView> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        TaskTile(
-          taskTitle: tasks[0].name,
-          isCheck: tasks[0].isDone,
-        ),
-        TaskTile(
-          taskTitle: tasks[1].name,
-          isCheck: tasks[1].isDone,
-        ),
-        TaskTile(
-          taskTitle: tasks[2].name,
-          isCheck: tasks[2].isDone,
-        )
-      ],
+    return ListView.builder( //listview Builder that has infinite list 
+      itemBuilder: (context, index) {
+        return TaskTile(
+          taskTitle: tasks[index].name,
+          isCheck: tasks[index].isDone,
+        );
+      },
+      itemCount: tasks.length,
     );
   }
 }
