@@ -21,6 +21,12 @@ class _TaskViewState extends State<TaskView> {
         return TaskTile(
           taskTitle: tasks[index].name,
           isCheck: tasks[index].isDone,
+          checkBoxCallBack : (bool? checkBoxState) {
+          //nullSafty
+          setState(() {
+            tasks[index].isDone = checkBoxState!; //nullSafty
+          });
+        }
         );
       },
       itemCount: tasks.length,
