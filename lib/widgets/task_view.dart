@@ -17,7 +17,7 @@ class _TaskViewState extends State<TaskView> {
       //listview Builder that has infinite list
       itemBuilder: (context, index) {
         return TaskTile(
-            taskTitle: widget.tasks[index].name,
+            taskTitle: widget.tasks[index].name, // this widget is use for providing values form one class to another in the state method.
             isCheck: widget.tasks[index].isDone,
             checkBoxCallBack: (bool? checkBoxState) {
               //nullSafty

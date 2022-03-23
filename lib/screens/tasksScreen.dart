@@ -11,6 +11,7 @@ class TasksScreen extends StatefulWidget {
 
 class _TasksScreenState extends State<TasksScreen> {
   List<Tasks> tasks = [
+    //Move tasks from task_view to tasksScreen to lifting up
     Tasks(name: 'Buy Milk'),
     Tasks(name: 'Buy Mango'),
     Tasks(name: 'Buy Orange')
@@ -23,7 +24,10 @@ class _TasksScreenState extends State<TasksScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-              context: context, builder: (context) => AddTaskScreen());
+              context: context,
+              builder: (context) => AddTaskScreen((newValue) {
+                    print(newValue);
+                  }));
         },
         backgroundColor: Colors.lightBlueAccent,
         child: Icon(Icons.add),

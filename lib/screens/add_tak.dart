@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AddTaskScreen extends StatelessWidget {
-
+  final Function callBackFun; // add a callBack Function that give back value to the up level class.
+  AddTaskScreen(this.callBackFun);
   @override
   Widget build(BuildContext context) {
+    String newText = "";
     return Container(
       color: Color(0xff757575),
       child: Container(
@@ -27,12 +29,17 @@ class AddTaskScreen extends StatelessWidget {
               TextField(
                 autofocus: true,
                 textAlign: TextAlign.center,
+                onChanged: (newTextField) {
+                  newText = newTextField;
+                },
               ),
               SizedBox(
                 height: 10.0,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  callBackFun(newText);
+                },
                 child: Text("Add"),
               )
             ],
