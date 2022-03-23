@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/models/tasks.dart';
 import 'package:todo_app/widgets/task_tile.dart';
 import 'package:todo_app/widgets/task_view.dart';
 import 'package:todo_app/screens/add_tak.dart';
 
-class TasksScreen extends StatelessWidget {
-  Widget buildBottomSheet(BuildContext context) {
-    return Container();
-  }
+class TasksScreen extends StatefulWidget {
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  List<Tasks> tasks = [
+    Tasks(name: 'Buy Milk'),
+    Tasks(name: 'Buy Mango'),
+    Tasks(name: 'Buy Orange')
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +22,8 @@ class TasksScreen extends StatelessWidget {
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(context: context, builder: (context)=> AddTaskScreen());
+          showModalBottomSheet(
+              context: context, builder: (context) => AddTaskScreen());
         },
         backgroundColor: Colors.lightBlueAccent,
         child: Icon(Icons.add),
@@ -64,7 +73,7 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20.0),
                 ),
               ),
-              child: TaskView(),
+              child: TaskView(tasks),
             ),
           )
         ],
