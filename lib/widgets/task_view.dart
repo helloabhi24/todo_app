@@ -6,22 +6,25 @@ import 'task_tile.dart';
 class TaskView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      //listview Builder that has infinite list
-      itemBuilder: (context, index) {
-        return TaskTile(
-            taskTitle: Provider.of<TaskData>(context)
-                .tasks[index]
-                .name, // this widget is use for providing values form one class to another in the state method.
-            isCheck: Provider.of<TaskData>(context).tasks[index].isDone,
-            checkBoxCallBack: (bool? checkBoxState) {
-              //nullSafty
-              // setState(() {
-              //   widget.tasks[index].isDone = checkBoxState!; //nullSafty
-              // });
-            });
+    return Consumer<TaskData>(
+      builder: (context, taskData, child) {
+        return ListView.builder(
+          //listview Builder that has infinite list
+          itemBuilder: (context, index) {
+            return TaskTile(
+                taskTitle: taskData.tasks[index]
+                    .name, // this widget is use for providing values form one class to another in the state method.
+                isCheck: taskData.tasks[index].isDone,
+                checkBoxCallBack: (bool? checkBoxState) {
+                  //nullSafty
+                  // setState(() {
+                  //   widget.tasks[index].isDone = checkBoxState!; //nullSafty
+                  // });
+                });
+          },
+          itemCount: taskData.itemCount,
+        );
       },
-      itemCount: Provider.of<TaskData>(context).tasks.length,
     );
   }
 }
