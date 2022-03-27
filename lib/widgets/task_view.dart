@@ -13,12 +13,16 @@ class TaskView extends StatelessWidget {
           itemBuilder: (context, index) {
             final task = taskData.tasks[index];
             return TaskTile(
-                taskTitle: task
-                    .name, // this widget is use for providing values form one class to another in the state method.
-                isCheck: task.isDone,
-                checkBoxCallBack: (bool? checkBoxState) {
-                  taskData.updateTask(task);
-                });
+              taskTitle: task
+                  .name, // this widget is use for providing values form one class to another in the state method.
+              isCheck: task.isDone,
+              checkBoxCallBack: (bool? checkBoxState) {
+                taskData.updateTask(task);
+              },
+              longPressCallback: () {
+                taskData.deleteTask(task);
+              },
+            );
           },
           itemCount: taskData.itemCount,
         );
