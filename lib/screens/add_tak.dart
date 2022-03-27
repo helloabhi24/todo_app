@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/models/taskData.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  final Function
-      callBackFun; // add a callBack Function that give back value to the up level class.
-  AddTaskScreen(this.callBackFun);
+  // add a callBack Function that give back value to the up level class.
   @override
   Widget build(BuildContext context) {
     late String newText;
@@ -38,10 +38,13 @@ class AddTaskScreen extends StatelessWidget {
                 height: 10.0,
               ),
               ElevatedButton(
-                onPressed: () {
-                  callBackFun(newText);
-                },
                 child: Text("Add"),
+                onPressed: () {
+                  Provider.of<TaskData>(context,
+                          listen: false) // It is require to add listen false
+                      .addTasks(newText);
+                  Navigator.pop(context);
+                },
               )
             ],
           ),
