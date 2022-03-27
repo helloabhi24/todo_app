@@ -11,15 +11,13 @@ class TaskView extends StatelessWidget {
         return ListView.builder(
           //listview Builder that has infinite list
           itemBuilder: (context, index) {
+            final task = taskData.tasks[index];
             return TaskTile(
-                taskTitle: taskData.tasks[index]
+                taskTitle: task
                     .name, // this widget is use for providing values form one class to another in the state method.
-                isCheck: taskData.tasks[index].isDone,
+                isCheck: task.isDone,
                 checkBoxCallBack: (bool? checkBoxState) {
-                  //nullSafty
-                  // setState(() {
-                  //   widget.tasks[index].isDone = checkBoxState!; //nullSafty
-                  // });
+                  taskData.updateTask(task);
                 });
           },
           itemCount: taskData.itemCount,
